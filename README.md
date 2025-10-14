@@ -19,7 +19,7 @@
 - <b>Create 1 Master machine on AWS with 2CPU, 8GB of RAM (t2.large) and 30 GB of storage manually or using Terraform.</b>
 #
 - <b>Open all the PORTs in security group of master machine</b> </br >
-![image](/images/ports.png)
+![image](images/ports.png)
 
 > We are creating this master machine because we will configure Jenkins master, eksctl, EKS cluster creation from here.
 
