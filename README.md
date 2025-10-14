@@ -29,7 +29,11 @@ sudo apt-get update
 ```bash
 sudo apt-get install docker.io -y
 
-sudo usermod -aG docker ubuntu && newgrp docker
+sudo usermod -aG docker ubuntu && newgrp docker 
+
+OR
+
+sudo chmod 777 /var/run/docker.sock
 ```
 #
 - <b id="Jenkins">Install and configure Jenkins (Master machine)</b>
@@ -78,14 +82,14 @@ sudo apt-get install jenkins -y
   - <b>Create EKS Cluster (Master machine)</b>
   ```bash
   eksctl create cluster --name=mega \
-                      --region=us-westst-2 \
+                      --region=us-west-2 \
                       --version=1.30 \
                       --without-nodegroup
   ```
   - <b>Associate IAM OIDC Provider (Master machine)</b>
   ```bash
   eksctl utils associate-iam-oidc-provider \
-    --region us-westst-2 \
+    --region us-west-2 \
     --cluster mega \
     --approve
   ```
@@ -104,22 +108,13 @@ sudo apt-get install jenkins -y
   ```
 
 >  Make sure the ssh-public-key "eks-nodegroup-key" is available in your aws account
-#
-
-  - <b>generate ssh keys (Master machine) to setup jenkins master-slave</b>
-  ```bash
-  ssh-keygen
-  ```
-  
-  - <b>Now move to directory where your ssh keys are generated and copy the content of public key and paste to authorized_keys file of the Jenkins worker node.</b>
-#
 
 - <b id="Sonar">Install and configure SonarQube (Master machine)</b>
 ```bash
 docker run -itd --name SonarQube-Server -p 9000:9000 sonarqube:lts-community
 ```
 #
-- <b id="Trivy">Install Trivy (Jenkins Worker)</b>
+- <b id="Trivy">Install Trivy (Jenkins Master)</b>
 ```bash
 sudo apt-get install wget apt-transport-https gnupg lsb-release -y
 wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
@@ -143,5 +138,5 @@ sudo apt-get install trivy -y
 ## Clean Up
 - <b id="Clean">Delete eks cluster</b>
 ```bash
-eksctl delete cluster --name=mega --region=us-west-1
+eksctl delete cluster --name=mega --region=us-west-2
 ```
