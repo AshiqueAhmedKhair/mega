@@ -18,8 +18,9 @@
 
 - <b>Create 1 Master machine on AWS with 2CPU, 8GB of RAM (t2.large) and 30 GB of storage manually or using Terraform.</b>
 #
-- <b>Open all the PORTs in security group of master machine</b> <br />
-![port image](https://raw.githubusercontent.com/bongodev/mega/refs/heads/main/files/portlist.png)
+- <b>Open all the PORTs in security group of master machine</b>
+![image](https://github.com/bongodev/mega/files/portlist.png)
+
 > We are creating this master machine because we will configure Jenkins master, eksctl, EKS cluster creation from here.
 
 Install & Configure Docker by using below command, "NewGrp docker" will refresh the group config hence no need to restart the EC2 machine.
