@@ -190,11 +190,11 @@ sudo apt-get install trivy -y
   ```bash
   kubectl get svc -n argocd
   ```
-  - <b> Check the port where ArgoCD server is running and expose it on security groups of a worker node</b>
+  - <b> Check the port where ArgoCD server is running and expose (port 30169 argocd-server) it on security groups of a worker node (mega-mega-Node not mega node)</b>
 
   - <b>Access it on browser, click on advance and proceed with</b>
   ```bash
-  <public-ip-worker>:<port> i.e.: <worker_ip>:30278
+  <public-ip-worker>:<port> i.e.: <worker_ip>:argocd-server-port 30169
   proceed to unsafe
   ```
 
@@ -204,8 +204,11 @@ sudo apt-get install trivy -y
   ```
   - <b>Username: admin</b>
   - <b> Now, go to <mark>User Info</mark> and update your argocd password
+  - <b> set new password </b>
 #
 
+## Now we need to set up Argocd
+  Settings > Repositories > Connect Repo
 
 ## Clean Up
 - <b id="Clean">Delete eks cluster</b>
