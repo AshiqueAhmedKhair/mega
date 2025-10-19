@@ -18,8 +18,18 @@
 
 - <b>Create 1 Master machine on AWS with 2CPU, 8GB of RAM (t2.large) and 30 GB of storage manually or using Terraform.</b>
 #
-- <b>Open all the PORTs in security group of master machine</b>
-![image](https://github.com/bongodev/mega/files/portlist.png)
+- <b>Open all the PORTs in security group of master machine</b> <br />
+| Port Range    | Source    | Description           |
+| ------------- | --------- | --------------------- |
+| 22            | 0.0.0.0/0 | SSH                   |
+| 443           | 0.0.0.0/0 | HTTPS                 |
+| 30000 - 32767 | 0.0.0.0/0 | NodePort services     |
+| 25            | 0.0.0.0/0 | SMTP                  |
+| 3000 - 10000  | 0.0.0.0/0 | Registered Ports      |
+| 6443          | 0.0.0.0/0 | Kubernetes API server |
+| 80            | 0.0.0.0/0 | HTTP                  |
+| 465           | 0.0.0.0/0 | SMTPS                 |
+
 
 > We are creating this master machine because we will configure Jenkins master, eksctl, EKS cluster creation from here.
 
@@ -32,6 +42,8 @@ sudo apt-get update
 sudo apt-get install docker.io -y
 
 sudo usermod -aG docker ubuntu && newgrp docker 
+
+sudo reboot
 
 OR
 
