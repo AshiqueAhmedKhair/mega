@@ -155,7 +155,7 @@ sudo apt-get install trivy -y
 
 ## Integrate Jenkins and SonarQube
 
-
+## Install ArgoCD on Master Machine
 #
 - <b>Install and Configure ArgoCD (Master Machine)</b>
   - <b>Create argocd namespace</b>
@@ -190,6 +190,7 @@ sudo apt-get install trivy -y
   ```bash
   kubectl get svc -n argocd
   ```
+  ## Check ArgoCd in Node Machine (Not in Master)
   - <b> Check the port where ArgoCD server is running and expose (port 30169 argocd-server) it on security groups of a worker node (mega-mega-Node not mega node)</b>
 
   - <b>Access it on browser, click on advance and proceed with</b>
